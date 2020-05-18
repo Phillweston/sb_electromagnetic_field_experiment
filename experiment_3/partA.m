@@ -1,0 +1,24 @@
+u=4*pi*1e-7;          
+e0=1e-9/(36*pi);       
+Z0=(u/e0)^0.5;        
+x=1e8;                %x为频率
+w=2*pi*x;             
+k=w*(u*e0)^0.5;       
+E=50;                 
+H=E/Z0;              
+z=0:0.01:15;
+m=zeros(size(z));
+Ex=E*cos(k*z);
+Hy=H*cos(k*z);
+plot3(-z,m,Hy,'g');
+hold on;
+grid on;
+plot3(-z,Ex,m,'g');
+Exx=-E*cos(k*z);
+Hyx=-H*cos(k*z);
+plot3(-z,Exx,m,'r');
+plot3(-z,m,Hyx,'r');
+xlabel('z');
+ylabel('x');
+zlabel('y');
+title({'平面电磁波垂直入射导体','绿色为入射波，红色为反射波'});
